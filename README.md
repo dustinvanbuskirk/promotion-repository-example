@@ -1,0 +1,1 @@
+# promotion-repository-example
