@@ -1,6 +1,6 @@
 {
     name: 'test-service',
-    image: 'registry/image:tag-50'
+    image: 'registry/image:tag-51'
     hostname: 'test-service.development.dvb.com',
     replicas: 2,
     enable_alb:: true,
