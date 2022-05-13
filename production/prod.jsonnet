@@ -1,6 +1,6 @@
-local common = import "../common/guestbook/guestbook-ui.libsonnet";
+local prod = import "../common/guestbook/guestbook-ui.libsonnet";
 
-common + {
+prod {
   image: "gcr.io/heptio-images/ks-guestbook-demo:0.2",
   name: "jsonnet-guestbook-ui",
   replicas: 4

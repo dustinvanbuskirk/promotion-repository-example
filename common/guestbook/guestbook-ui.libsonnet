@@ -1,51 +1,51 @@
 [
    {
-      "apiVersion": "v1",
-      "kind": "Service",
-      "metadata": {
-         "name": params.name
+      apiVersion: "v1",
+      kind: "Service",
+      metadata: {
+         name: $.name
       },
-      "spec": {
-         "ports": [
+      spec: {
+         ports: [
             {
-               "port": params.servicePort,
-               "targetPort": params.containerPort
+               port: 80,
+               targetPort: 80
             }
          ],
-         "selector": {
-            "app": params.name
+         selector: {
+            app: $.name
          },
-         "type": params.type
+         type: "LoadBalancer"
       }
    },
    {
-      "apiVersion": "apps/v1",
-      "kind": "Deployment",
-      "metadata": {
-         "name": params.name
+      apiVersion: "apps/v1",
+      kind: "Deployment",
+      metadata: {
+         name: $.name
       },
-      "spec": {
-         "replicas": params.replicas,
-         "revisionHistoryLimit": 3,
-         "selector": {
-            "matchLabels": {
-               "app": params.name
+      spec: {
+         replicas: $.replicas,
+         revisionHistoryLimit: 3,
+         selector: {
+            matchLabels: {
+               app: $.name,
             },
          },
-         "template": {
-            "metadata": {
-               "labels": {
-                  "app": params.name
+         template: {
+            metadata: {
+               labels: {
+                  app: $.name,
                }
             },
-            "spec": {
-               "containers": [
+            spec: {
+               containers: [
                   {
-                     "image": params.image,
-                     "name": params.name,
-                     "ports": [
+                     image: $.image,
+                     name: $.name,
+                     ports: [
                      {
-                        "containerPort": params.containerPort
+                        containerPort: 80
                      }
                      ]
                   }
